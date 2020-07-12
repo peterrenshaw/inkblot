@@ -1,7 +1,32 @@
 
   inkblot: A simple hack to play around with adding, positioning 
            images to screen. Uses inkyPHAT cal example as starting
-           point.
+           point. 
+
+  Source <https://learn.pimoroni.com/tutorial/sandyj/getting-started-with-inky-phat>
+
 
 2020JUL12
 * able to load an image to screen
+
+* fonts
+- if you want to use a font, try the following:
+
+    know where to find your fonts. On a RPi system, 
+
+        <https://wiki.debian.org/Fonts#Adding_fonts>
+
+    locally on your system use:
+    
+        fc-list 
+
+    know how to load a font
+
+        <https://pillow.readthedocs.io/en/stable/reference/ImageFont.html> 
+
+* images
+- want to draw an image to screen?
+
+      <https://pillow.readthedocs.io/en/stable/reference/Image.html> 
+
+

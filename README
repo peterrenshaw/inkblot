@@ -1,3 +1,9 @@
+        _         __    __     __        __ 
+       (_)____   / /__ / /_   / /____   / /_
+      / // __ \ / //_// __ \ / // __ \ / __/
+     / // / / // ,<  / /_/ // // /_/ // /_  
+    /_//_/ /_//_/|_|/_.___//_/ \____/ \__/  
+
 
   inkblot: A simple hack to play around with adding, positioning 
            images to screen. Uses inkyPHAT cal example as starting
@@ -29,4 +35,8 @@
 
       <https://pillow.readthedocs.io/en/stable/reference/Image.html> 
 
+Resources
 
+[1] Title created with an ASCII text generator using 'slant' and 'stretch=Yes". 
+The code is based on Figlet which can be found here ~ <http://www.figlet.org/>
+[Last accessed: Saturday 12th July, 2020]

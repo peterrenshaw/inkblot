@@ -13,6 +13,7 @@
 
 
 import os
+from glob import glob
 from time import strftime
 from time import localtime
 
@@ -21,7 +22,6 @@ from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
 from inky import InkyPHAT
-from font_untuitive import Intuitive
 
 
 #
@@ -30,8 +30,11 @@ from font_untuitive import Intuitive
 COLOR = "red"
 SCALE_SIZE = 1.0
 MMMDD = "%b%d"
-DT = "{}".format( strftime(MMMDD, localtime()).upper()
+DT = "{}".format( strftime(MMMDD, localtime()).upper())
 ID = InkyPHAT(COLOR)
+PATH = os.path.dirname(__file__) 
+FONT = ImageFont.truetype("DejaVuSansMono.ttf", 30)
+
 
 
 #
@@ -39,9 +42,9 @@ ID = InkyPHAT(COLOR)
 # < https://github.com/pimoroni/inky/blob/master/examples/phat/weather-phat.py>
 # 
 def create_mask(source,
-                mask=(inky_display.WHITE, 
-                      inky_display.BLACK,
-                      inky_display.RED)):
+                mask=(ID.WHITE, 
+                      ID.BLACK,
+                      ID.RED)):
     mask_image = Image.new("1", source.size)
     w, h = source.size
     for x in range(w):
@@ -53,7 +56,7 @@ def create_mask(source,
     return mask_image
 
 
-:#
+#
 # dictionaries to store icons and masks in
 #
 icons = {}
@@ -71,25 +74,30 @@ icon_map = {
 }
 time_icon = None
 time_icon = icon_map["second"]
+print("time_icon {}".format(time_icon))
+
 
 # canvas
-img = Image.open(os.path.join(PATH, "logoneek.png")
+img = Image.open(os.path.join(PATH, "logoneek.png"))
 draw = ImageDraw.Draw(img)
 
 
 # load icon files and masks
-for icon in glob.glob(os.path.join(PATH, "icon-*.png")):
+for icon in glob(os.path.join(PATH, "icon-*.png")):
     icon_name = icon.split("icon-")[1].replace(".png", "") 
     icon_image = Image.open(icon)
     icons[icon_name] = icon_image
     mask[icon_name] = create_mask(icon_image)
 
+TI = time_icon[0]
+print("time_icon        <{}>".format(TI))
+print("icons[time_icon] <{}>".format(icons[TI]))
 
-intuitive_font = ImageFont.truetype(intuitive, int(22 * SCALE_SIZE))
+print("mask[time_icon]  <{}>".format(mask[TI]))
 
-img.paste(icons[time_icon], (), masks[time_icon])
-inky_display.set_image(img)
-inky_display.show()
+img.paste(icons[TI], (174, -10), mask[TI])
+ID.set_image(img)
+ID.show()
 
 
 # eof  

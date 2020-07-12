@@ -1,0 +1,7 @@
+
+  inkblot: A simple hack to play around with adding, positioning 
+           images to screen. Uses inkyPHAT cal example as starting
+           point.
+
+2020JUL12
+* able to load an image to screen
